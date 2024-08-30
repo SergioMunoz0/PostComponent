@@ -1,0 +1,157 @@
+@import url("./utils.css");
+@keyframes swift_slide {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animationNewElement {
+  animation: swift_slide 0.5s ease;
+}
+
+.postItem-container {
+  margin-top: 15px;
+  width: 50%;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: var(--main-element-background-color-dark);
+  color: var(--font-main-color);
+  font-family: var(--font-stack);
+  min-height: 100px;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.75);
+}
+.postItem-container .postItem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.postItem-container .postItem-header .postItem-userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.postItem-container .postItem-header .postItem-userInfo .point {
+  margin-bottom: 6px;
+}
+.postItem-container .postItem-header .postItem-userInfo p {
+  font-weight: bolder;
+}
+.postItem-container .postItem-header .postItem-userInfo .profilePicture {
+  border-radius: 2em;
+  height: 40px;
+  width: 40px;
+}
+.postItem-container .postItem-header .postItem-userInfo .icon-container {
+  padding: 0.4em 0.5em 0.2em 0.5em;
+  border-radius: 2em;
+}
+.postItem-container .postItem-header .postItem-userInfo .icon-container .visibility-icon {
+  height: 18px;
+  width: 18px;
+  padding: 0;
+  margin: 0;
+  filter: invert(70%);
+}
+.postItem-container .postItem-header .postItem-userInfo .icon-container:hover {
+  background-color: var(--main-element-background-color-light);
+}
+.postItem-container .postItem-header .postItem-userInfo .verifiedUser {
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 0;
+  filter: invert(100%);
+}
+.postItem-container .postItem-header .postItem-userInfo .postTime {
+  color: rgba(148, 148, 148, 0.9803921569);
+  font-weight: 700;
+  font-size: 0.8em;
+}
+.postItem-container .postItem-header .threePoint-container {
+  padding: 0.7em;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+.postItem-container .postItem-header .threePoint-container .threePoint-icon {
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  margin: 0;
+  filter: invert(100%);
+}
+.postItem-container .postItem-header .threePoint-container:hover {
+  background-color: var(--main-element-background-color-light);
+}
+.postItem-container .postItem-main {
+  text-align: justify;
+  line-height: 1.5;
+}
+.postItem-container .divisorLine {
+  width: 100%;
+  border: solid 1px var(--main-element-background-color-light);
+}
+.postItem-container .postItem-socialOptions {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.postItem-container .postItem-socialOptions span {
+  padding: 0.5em 1em;
+  color: var(--font-main-color);
+  font-weight: bold;
+  font-family: var(--font-stack);
+  border-radius: 1em;
+  width: 30%;
+  height: 20px;
+}
+.postItem-container .postItem-socialOptions span:hover {
+  background-color: var(--main-element-background-color-light);
+}
+.postItem-container .postItem-socialOptions .social-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.postItem-container .postItem-socialOptions .social-container .social-icon {
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  filter: invert(100%);
+}
+.postItem-container .postItem-socialOptions .social-container .hornsSing-icon {
+  height: 35px;
+  width: 35px;
+}
+.postItem-container .postItem-socialOptions .social-container .comments-icon {
+  width: 25px;
+}
+
+@media (max-width: 1650px) {
+  .postItem-container {
+    width: 80%;
+  }
+}
+@media (max-width: 500px) {
+  .social-container {
+    gap: 0;
+  }
+  .social-container p {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=postitem.css.map */

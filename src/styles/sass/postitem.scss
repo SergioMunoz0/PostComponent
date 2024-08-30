@@ -1,0 +1,183 @@
+@import url('./utils.css');
+
+@keyframes swift_slide {
+    from {
+      opacity: 0;          
+      transform: scale(0.5); 
+    }
+    to {
+      opacity: 1;         
+      transform: scale(1);  
+    }
+  }
+
+.animationNewElement{
+    animation: swift_slide 0.5s ease;
+}
+
+.postItem-container{
+    margin-top: 15px;
+    width: 50%;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: var(--main-element-background-color-dark);
+    color:var(--font-main-color);
+    font-family: var(--font-stack);
+    min-height: 100px;
+    display: flex;  
+    gap: 1em;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.75);
+
+    .postItem-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .postItem-userInfo{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .point{
+                margin-bottom: 6px;
+            }
+    
+            p{
+                font-weight: bolder;
+            }
+    
+            .profilePicture{
+                border-radius: 2em;
+                height: 40px;
+                width: 40px;
+            }
+
+            .icon-container{
+                padding: .4em .5em .2em .5em;
+                border-radius: 2em;
+
+                .visibility-icon{
+                    height: 18px;
+                    width: 18px;
+                    padding: 0;
+                    margin: 0;
+                    filter: invert(70%);
+                }
+            }
+
+            .icon-container:hover{
+                background-color: var(--main-element-background-color-light);
+            }
+
+            .verifiedUser{
+                height: 16px;
+                width: 16px;
+                padding: 0;
+                margin: 0;
+                filter: invert(100%);
+            }
+
+            .postTime{  
+                color: #949494fa;
+                font-weight: 700;
+                font-size: .8em;
+            }
+        }
+
+        .threePoint-container{
+            padding: .7em;
+            border-radius: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+
+            .threePoint-icon{
+                height: 15px;
+                width: 15px;
+                padding: 0;
+                margin: 0;
+                filter: invert(100%);
+            }
+        }
+
+        .threePoint-container:hover{
+            background-color: var(--main-element-background-color-light);
+        }
+       
+    }
+
+    
+    .postItem-main{
+        text-align: justify;
+        line-height: 1.5;
+    }
+
+    .divisorLine{
+        width: 100%;
+        border: solid 1px var(--main-element-background-color-light);
+    }
+
+    .postItem-socialOptions{
+        display: flex;  
+        width: 100%;
+        justify-content: space-around;
+
+        span{
+            padding: .5em 1em;
+            color: var(--font-main-color);
+            font-weight: bold;
+            font-family: var(--font-stack);
+            border-radius: 1em;
+            width: 30%;
+            height: 20px;
+        }   
+    
+        span:hover{
+            background-color: var(--main-element-background-color-light);
+        }
+
+        .social-container{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            .social-icon{
+                height: 20px;
+                width: 20px;
+                padding: 0;
+                margin: 0;
+                filter: invert(100%);
+            }
+
+            .hornsSing-icon{
+                height: 35px;
+                width: 35px;
+            }
+
+            .comments-icon{
+                width: 25px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1650px) {
+    .postItem-container{
+        width: 80%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .social-container{
+        gap: 0;
+
+        p{
+            display: none;
+        }
+    }
+  }
