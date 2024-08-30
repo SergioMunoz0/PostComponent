@@ -17,7 +17,8 @@ export default function CreatePost(props){
     const [formInfo,setFormInfo] = useState(
         {
             text: "",
-            visibility: "publico"  //default visibility
+            visibility: "publico",  //default visibility
+            imageUrl: ""
         }
     )
 
@@ -47,7 +48,8 @@ export default function CreatePost(props){
 
         const newPost = {
             "text":formInfo.text,
-            "visibility":formInfo.visibility
+            "visibility":formInfo.visibility,
+            "imageUrl":formInfo.imageUrl
         }
 
         props.setDataPosts(prevData =>{
@@ -88,6 +90,27 @@ export default function CreatePost(props){
         event === "onMouseOver" ? label.style.display = "block" : label.style.display = "none"
     }
 
+    function triggerFileLoad(){
+        document.querySelector("#fileInput").click()   
+    }
+
+    //Carga una imagen usando la API filereader
+    function openFile(event){
+        var input = event.target;
+      
+        var reader = new FileReader();
+        reader.onload = function(){
+            var dataURL = reader.result; 
+            setFormInfo(prevData => {
+                return{
+                    ...prevData,
+                    imageUrl: dataURL
+                }
+            })
+          };
+        reader.readAsDataURL(input.files[0]); 
+    }
+
     return(
         <div className="createPost-container">
             <form className="createPost-form" onSubmit={handleSubmit}>
@@ -108,10 +131,12 @@ export default function CreatePost(props){
                 {isExtendentPost && <div className="formPost-options">
                     <div className="postAdd-options">
                         <span>Agrega</span>
-                        <div>
+                        <div onClick={triggerFileLoad}>
                             <img className="post-icon gallery-icon" src={gallery} alt="gallery" 
-                                    onMouseOver={()=>handleIconLabel("onMouseOver","label-photo")} onMouseOut={()=>handleIconLabel("onMouseOut","label-photo")}/>
-                            <label className="icon-label" id="label-photo">Photo</label>
+                                    onMouseOver={()=>handleIconLabel("onMouseOver","label-photo")} 
+                                    onMouseOut={()=>handleIconLabel("onMouseOut","label-photo")}/>
+                            <label className="icon-label" id="label-photo">Photo</label> 
+                            <input type='file' accept='image/*' id="fileInput" onChange={openFile}></input> 
                         </div>   
                         <div>
                             <img className="post-icon play-icon" src={play} alt="play"

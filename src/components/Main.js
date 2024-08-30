@@ -9,7 +9,8 @@ export default function Main(){
         text:`El gato negro observaba atento desde el tejado. Sus ojos brillaban en la oscuridad,
         como si guardaran secretos milenarios. Un suave maullido rompió el silencio de la noche, y la luna, 
         curiosa, asomó entre las nubes para ver al misterioso felino, que parecía ser el guardián de la noche.`,
-        visibility: 'publico'
+        visibility: 'publico',
+        imageUrl: ''
     }])
 
     const postItems = dataPosts.map((post,index)=>{
@@ -18,6 +19,7 @@ export default function Main(){
                     isFirst={index===0 ? true : false}
                     text={post.text} 
                     visibility={post.visibility}
+                    imageUrl={post.imageUrl} 
                 />})
         
     return(

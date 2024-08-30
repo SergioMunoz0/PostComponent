@@ -79,6 +79,9 @@
   padding: 0.3em 1.1em;
   gap: 5px;
 }
+.createPost-container .createPost-form .formPost-options .postAdd-options input[type=file] {
+  display: none;
+}
 .createPost-container .createPost-form .formPost-options .postAdd-options span {
   font-family: var(--font-stack);
   font-weight: 100;

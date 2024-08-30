@@ -88,6 +88,10 @@
                 padding: .3em 1.1em;
                 gap: 5px;
 
+                input[type="file"] {
+                    display: none;
+                }
+
                 span{
                     font-family: var(--font-stack);
                     font-weight: 100;
