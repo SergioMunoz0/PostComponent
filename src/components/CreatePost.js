@@ -11,31 +11,24 @@ import play from '../assets/icons/play.png'
 import microphone from '../assets/icons/microphone.png'
 import label from '../assets/icons/label.png'
 
+//hooks
+import useForm from '../hooks/useForm.js'
+import useReadImage from '../hooks/useReadImage.js'
+
 export default function CreatePost(props){
 
     //Informacion formulario post
-    const [formInfo,setFormInfo] = useState(
-        {
-            text: "",
-            visibility: "publico",  //default visibility
-            imageUrl: ""
-        }
-    )
+    const [formInfo, handleForm, setFormInfo] = useForm( {
+        text: "",
+        visibility: "publico",  //default visibility
+        imageUrl: ""
+    })
 
     const [checkItem, setCheckItem] = useState("Publico")
 
     //Determina el layout de createPost
     const [isExtendentPost, setIsExtendentPost] = useState(false)
 
-    function handleForm(event){
-        const {name, value} = event.target
-        setFormInfo(prevData =>{
-            return {
-                ...prevData,
-                [name]: value
-            }
-        })
-    }
 
     function handleSubmit(event){
         event.preventDefault()
@@ -94,22 +87,9 @@ export default function CreatePost(props){
         document.querySelector("#fileInput").click()   
     }
 
-    //Carga una imagen usando la API filereader
-    function openFile(event){
-        var input = event.target;
-      
-        var reader = new FileReader();
-        reader.onload = function(){
-            var dataURL = reader.result; 
-            setFormInfo(prevData => {
-                return{
-                    ...prevData,
-                    imageUrl: dataURL
-                }
-            })
-          };
-        reader.readAsDataURL(input.files[0]); 
-    }
+    //Carga una imagen y la actualiza en el form
+    const [ openFile ] = useReadImage(handleForm)
+    
 
     return(
         <div className="createPost-container">
