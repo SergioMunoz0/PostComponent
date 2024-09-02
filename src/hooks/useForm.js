@@ -14,5 +14,5 @@ export default function useForm(initialValues){
         })
     }
 
-    return [formInfo, handleForm, setFormInfo]
+    return { formInfo, handleForm, setFormInfo }
 }

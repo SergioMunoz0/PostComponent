@@ -14,21 +14,22 @@ import label from '../assets/icons/label.png'
 //hooks
 import useForm from '../hooks/useForm.js'
 import useReadImage from '../hooks/useReadImage.js'
+import useLyoutOptions from '../hooks/useLyoutOptions.js'
+import usePost from '../hooks/usePost.js'
 
-export default function CreatePost(props){
+export default function CreatePost(){
+
+    //Post context
+    const { setDataPosts } = usePost()
 
     //Informacion formulario post
-    const [formInfo, handleForm, setFormInfo] = useForm( {
+    const {formInfo, handleForm, setFormInfo} = useForm( {
         text: "",
         visibility: "publico",  //default visibility
         imageUrl: ""
     })
 
     const [checkItem, setCheckItem] = useState("Publico")
-
-    //Determina el layout de createPost
-    const [isExtendentPost, setIsExtendentPost] = useState(false)
-
 
     function handleSubmit(event){
         event.preventDefault()
@@ -45,7 +46,7 @@ export default function CreatePost(props){
             "imageUrl":formInfo.imageUrl
         }
 
-        props.setDataPosts(prevData =>{
+        setDataPosts(prevData =>{
             return [newPost, ...prevData]
         })
 
@@ -53,36 +54,9 @@ export default function CreatePost(props){
         handleCreatePostLyout("submitted")
     }
 
-    function handleOptionList(){
-        const list = document.querySelector(".visibility-list")
-        list.style.display === "flex" ? list.style.display = "none" : list.style.display = "flex"
-    }
-
-    function handleCreatePostLyout(state){
-        const postForm = document.querySelector(".createPost-form")
-        const postInput = document.querySelector(".textPost-input")
-
-        if(state==="submitted"){
-            setIsExtendentPost(false)
-            postForm.style.transition = "none"
-            postForm.style.height = "40px"
-            postInput.classList.add("textPost-hoverEffect");
-            setFormInfo({text:""}) 
-            
-        }else{
-            setIsExtendentPost(true)
-            postForm.style.transition = "height 0.2s ease"
-            postForm.style.height = "170px"
-            postInput.classList.remove("textPost-hoverEffect");
-        }
-    }
-
-    //Controla el label de los iconos
-    function handleIconLabel(event, element){
-        const label = document.querySelector(`#${element}`)
-        event === "onMouseOver" ? label.style.display = "block" : label.style.display = "none"
-    }
-
+    //Layout options for createPost
+    const [handleOptionList, handleCreatePostLyout, handleIconLabel, isExtendentPost] = useLyoutOptions(setFormInfo) //<--- temporary setFormInfo
+    
     function triggerFileLoad(){
         document.querySelector("#fileInput").click()   
     }
